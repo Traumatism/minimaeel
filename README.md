@@ -9,7 +9,7 @@ A concatenative programming language made in [maeel](https://github.com/traumati
 . lib                  /* minimaeel library */
 |- stack.maeel         /* minimaeel stack vm */
 |- lexer.maeel         /* minimaeel lexer */
-'- interpreter.maeel   /* minimaeel interpreter */
+|- interpreter.maeel   /* minimaeel interpreter */
 
 minimaeel.maeel        /* minimaeel program runner */
 
