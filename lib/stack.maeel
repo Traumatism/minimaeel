@@ -1,0 +1,55 @@
+"std" include
+
+| Create an empty stack
+fun stack_init
+(
+    {}
+)
+
+| Push a value on the top of the stack (S e -- S)
+fun stack_push stack value
+(
+    stack value +
+)
+
+| Pop the stack top value (S -- e S)
+fun stack_pop stack
+(
+    stack last -> top_element
+
+    {} 0 stack len 1- range for
+    (stack swap get +) -> new_stack
+
+    top_element new_stack
+)
+
+| Duplicate the stack top value (S -- S)
+fun stack_dup stack
+(
+    stack last -> top_element
+    stack top_element stack_push
+)
+
+| Swap the stack two top values (S -- S)
+fun stack_swap stack
+(
+
+    stack stack_pop -> stack -> a
+    stack stack_pop -> stack -> b
+
+    stack
+        a stack_push
+        b stack_push
+)
+
+| Duplicate the value over the stack top value (S -- S)
+fun stack_over stack
+(
+    stack stack_pop -> stack -> a
+    stack stack_pop -> stack -> b
+
+    stack
+        b stack_push
+        a stack_push
+        b stack_push
+)

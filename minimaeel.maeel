@@ -1,0 +1,3 @@
+"lib/stack" include
+
+stack_init -> mm_stack
