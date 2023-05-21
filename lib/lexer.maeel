@@ -16,26 +16,20 @@ fun lex_text text
         state -> state_cpy
 
         state_cpy 0 = => (
-            "{" char = => (
-                1 -> state
-            )
-
-            "{" char = not => (
-                tokens char + -> tokens
-            )
+            "{" char = => (1 -> state)
+            "{" char = not => (tokens char + -> tokens)
         )
 
         state_cpy 1 = => (
             "}" char = => (
-                0 -> state
+                0                      -> state
                 integer_buffer str2int -> value
-                "" -> integer_buffer
-
-                tokens value + -> tokens
+                ""                     -> integer_buffer
+                tokens value +         -> tokens
             )
 
             "}" char = not => (
-                integer_buffer char + -> integer_buffer
+                integer_buffer char +  -> integer_buffer
             )
         )
 

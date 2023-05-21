@@ -1,8 +1,6 @@
-"lib/stack" include
 "lib/lexer" include
 "lib/interpreter" include
 
-"{123}d*{1}+" -> program
+"{3}{2}*{1}+p" -> program
 
-
-program lex_text -> tokens
+program lex_text interpret

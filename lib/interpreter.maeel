@@ -1,0 +1,31 @@
+"std" include
+"lib/stack" include
+
+fun interpret tokens
+(
+    stack_init -> stack
+
+    tokens for (
+        -> token
+
+        token "+" = => (
+            stack stack_pop -> stack -> a
+            stack stack_pop -> stack -> b
+            stack a b + stack_push -> stack
+        )
+
+        token "*" = => (
+            stack stack_pop -> stack -> a
+            stack stack_pop -> stack -> b
+            stack a b + stack_push -> stack
+        )
+
+        token "p" = => (
+            stack last print
+        )
+
+        "+*p" token contains not => (
+            stack token stack_push -> stack
+        )
+    )
+)
