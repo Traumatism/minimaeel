@@ -1,3 +1,8 @@
 "lib/stack" include
+"lib/lexer" include
+"lib/interpreter" include
 
-stack_init -> mm_stack
+"{123}d*{1}+" -> program
+
+
+program lex_text -> tokens

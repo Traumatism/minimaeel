@@ -1,0 +1,48 @@
+"std" include
+
+fun lex_text text
+(
+
+    "" -> integer_buffer
+    0  -> state
+    0  -> sp
+    {} -> tokens
+
+    text len -> text_len
+
+    sp text_len < while
+    (
+        text sp get -> char
+        state -> state_cpy
+
+        state_cpy 0 = => (
+            "{" char = => (
+                1 -> state
+            )
+
+            "{" char = not => (
+                tokens char + -> tokens
+            )
+        )
+
+        state_cpy 1 = => (
+            "}" char = => (
+                0 -> state
+                integer_buffer str2int -> value
+                "" -> integer_buffer
+
+                tokens value + -> tokens
+            )
+
+            "}" char = not => (
+                integer_buffer char + -> integer_buffer
+            )
+        )
+
+        sp inc -> sp
+
+        sp text_len <
+    )
+
+    tokens
+)
